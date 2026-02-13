@@ -11,7 +11,9 @@ def recibir_mensajes(conexion, addr):
         if not datos:
             print(f"Cliente {addr} desconectado.")
             break
-        print(f"Cliente: {datos.decode('utf-8')}")
+        texto = datos.decode("utf-8")
+        print(f"Cliente: {texto}")
+        conexion.sendall(f"Recibido: {texto}".encode("utf-8"))
 
 if __name__ == "__main__":
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as servidor:
