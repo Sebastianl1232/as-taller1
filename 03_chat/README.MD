@@ -2,90 +2,86 @@
 
 ## Descripción
 
-Sistema de chat en tiempo real que permite múltiples usuarios conectados simultáneamente. Todos los mensajes se transmiten (broadcast) a todos los clientes conectados.
+Sistema de chat que permite que múltiples usuarios se conecten simultáneamente y vean los mensajes de todos en tiempo real.
 
 ## Archivos
 
-- `servidor.py`: Servidor que gestiona múltiples clientes y hace broadcast de mensajes.
-- `cliente.py`: Cliente de chat con nombre de usuario.
+- `servidor.py`: Servidor central que maneja múltiples conexiones y hace broadcasting de mensajes.
+- `cliente.py`: Cliente que se conecta al servidor con un nombre de usuario.
 
 ## Características
 
-- **Múltiples usuarios simultáneos**: Varios clientes pueden conectarse al mismo tiempo
-- **Broadcast de mensajes**: Los mensajes se envían a todos los usuarios conectados
-- **Nombres de usuario**: Cada usuario tiene un nombre identificador
-- **Notificaciones**: Avisa cuando alguien se une o sale del chat
-- **Threading**: Manejo concurrente de múltiples conexiones
-- **Puerto**: 65434
+- ✅ **Multiusuario**: Múltiples clientes conectados simultáneamente
+- ✅ **Broadcasting**: Los mensajes se envían a todos los usuarios
+- ✅ **Nombres de usuario**: Cada cliente se identifica con un nombre
+- ✅ **Notificaciones**: Avisa cuando alguien se une o sale del chat
+- ✅ **Threading**: Manejo concurrente de múltiples clientes
+- ✅ **Puerto**: 65434
 
 ## Uso
 
+### 1. Iniciar el servidor
+
 ```bash
-# Terminal 1 - Servidor
 python servidor.py
+```
 
-# Terminal 2 - Cliente 1
-python cliente.py
+### 2. Conectar múltiples clientes
 
-# Terminal 3 - Cliente 2
-python cliente.py
+En terminales separadas:
 
-# Terminal 4 - Cliente N...
+```bash
 python cliente.py
 ```
+
+Cada cliente deberá ingresar un nombre al conectarse.
 
 ## Ejemplo de interacción
 
 **Servidor:**
-```text
-Servidor de chat multiusuario en localhost:65434
-Juan se ha conectado desde ('127.0.0.1', 53422)
-María se ha conectado desde ('127.0.0.1', 53423)
-Juan: Hola a todos!
-María: Hola Juan!
-Juan se desconectó
+```
+Servidor de chat escuchando en localhost:65434
+Esperando conexiones...
+
+Ana (127.0.0.1, 54321) se ha conectado
+Carlos (127.0.0.1, 54322) se ha conectado
+Ana: Hola a todos!
+Carlos: Hola Ana, ¿cómo estás?
 ```
 
-**Cliente 1 (Juan):**
-```text
-Ingresa tu nombre: Juan
-
-Bienvenido al chat, Juan!
-Escribe 'salir' para desconectarte.
-
+**Cliente 1 (Ana):**
+```
+Ingresa tu nombre: Ana
+Bienvenido al chat, Ana!
+>>> Carlos se ha unido al chat
 Tú: Hola a todos!
->>> María se unió al chat
-Tú: 
-María: Hola Juan!
-Tú: salir
+Carlos: Hola Ana, ¿cómo estás?
+Tú: Muy bien, gracias!
 ```
 
-**Cliente 2 (María):**
-```text
-Ingresa tu nombre: María
-
-Bienvenido al chat, María!
-Escribe 'salir' para desconectarte.
-
-Tú: 
-Juan: Hola a todos!
-Tú: Hola Juan!
-<<< Juan salió del chat
-Tú: 
+**Cliente 2 (Carlos):**
+```
+Ingresa tu nombre: Carlos
+Bienvenido al chat, Carlos!
+Ana: Hola a todos!
+Tú: Hola Ana, ¿cómo estás?
+Ana: Muy bien, gracias!
 ```
 
-## Conceptos Implementados
+## Conceptos Clave
 
-- **Patrón Publicador/Suscriptor**: Los mensajes se publican a todos los suscriptores
-- **Broadcasting**: Envío de mensajes a múltiples destinatarios
+- **Broadcasting**: Envío de mensajes a todos los clientes conectados
 - **Threading**: Cada cliente se maneja en un hilo separado
-- **Lock/Mutex**: Control de acceso concurrente a recursos compartidos
-- **Gestión de estado**: Lista compartida de clientes activos
+- **Locks**: Sincronización para evitar conflictos al acceder a la lista de clientes
+- **Patrón Publicador/Suscriptor**: El servidor publica mensajes a todos los suscriptores (clientes)
 
-## Mejoras Posibles
+## Comandos
 
-- Salas de chat múltiples
-- Mensajes privados entre usuarios
-- Lista de usuarios conectados
-- Historial de mensajes
-- Autenticación de usuarios
+- `salir`, `exit`, `quit`: Desconectarse del chat
+
+## Diferencias con ejemplos anteriores
+
+- Manejo de múltiples clientes simultáneos
+- Sistema de nombres de usuario
+- Broadcasting de mensajes a todos
+- Notificaciones de entrada/salida de usuarios
