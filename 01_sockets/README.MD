@@ -20,10 +20,10 @@ Ejemplo basico de comunicacion cliente-servidor usando sockets TCP.
 
 ```bash
 # Terminal 1 - Servidor
-python servidor.py
+python 01_sockets/servidor.py
 
 # Terminal 2 - Cliente
-python cliente.py
+python 01_sockets/cliente.py
 ```
 
 ## Ejemplo de interaccion
