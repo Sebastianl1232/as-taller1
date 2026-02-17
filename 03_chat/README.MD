@@ -23,7 +23,7 @@ Sistema de chat que permite que múltiples usuarios se conecten simultáneamente
 ### 1. Iniciar el servidor
 
 ```bash
-python servidor.py
+python 03_chat/servidor.py
 ```
 
 ### 2. Conectar múltiples clientes
@@ -31,7 +31,7 @@ python servidor.py
 En terminales separadas:
 
 ```bash
-python cliente.py
+python 03_chat/cliente.py   
 ```
 
 Cada cliente deberá ingresar un nombre al conectarse.
