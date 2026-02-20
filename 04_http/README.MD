@@ -1,9 +1,4 @@
 # 4. Servidor HTTP Básico
-
-## Descripción
-
-Este ejercicio implementa un **servidor HTTP básico desde cero** usando sockets en Python, sin depender de librerías como `Flask` o `Django`. El objetivo es entender cómo funciona el protocolo HTTP a nivel fundamental.
-
 ## Conceptos Clave
 
 ### Protocolo HTTP
@@ -52,7 +47,7 @@ Este ejercicio implementa un **servidor HTTP básico desde cero** usando sockets
 Abre una terminal en la carpeta `04_http` y ejecuta:
 
 ```bash
-python servidor.py
+python 04_http/servidor.py
 ```
 
 Deberías ver:
@@ -66,7 +61,7 @@ Presiona Ctrl+C para detener el servidor...
 En **otra terminal** (en la misma carpeta), ejecuta:
 
 ```bash
-python cliente.py
+python 04_http/cliente.py
 ```
 
 Se abrirá un menú interactivo donde puedes:
